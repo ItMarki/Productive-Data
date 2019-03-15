@@ -308,24 +308,24 @@ function format_time(s) {
 //Options
 function toggle_auto_save() {
 	game.options.auto_save = !game.options.auto_save
-	document.getElementById("auto_save").textContent = "Auto save: " + (game.options.auto_save ? "ON" : "OFF")
+	document.getElementById("auto_save").textContent = "自動保存: " + (game.options.auto_save ? "開" : "關")
 }
 
 function toggle_offline_progress() {
 	game.options.offline_progress = !game.options.offline_progress
-	document.getElementById("offline_progress").textContent = "Offline progress: " + (game.options.offline_progress ? "ON" : "OFF")
+	document.getElementById("offline_progress").textContent = "離線進度: " + (game.options.offline_progress ? "開" : "關")
 }
 
 function change_tick_rate() {
 	game.options.tick_rate = game.options.tick_rate % 60 + 5
-	document.getElementById("tick_rate").textContent = "Tick rate: " + game.options.tick_rate + "/s"
+	document.getElementById("tick_rate").textContent = "每刻率: " + game.options.tick_rate + "每秒"
 	clearInterval(game_loop)
 	game_loop = setInterval(game_tick, 1000/game.options.tick_rate)
 }
 
 function get_theme_name() {
 	var msg = ""
-	if (game.options.theme.color != 5) msg = ([null, "Red", "Orange", "Yellow", "Lime", null, "Jade", "Cyan", "Water", "Blue", "Purple", "Pink", "Red Beryl"])[game.options.theme.color]
+	if (game.options.theme.color != 5) msg = ([null, "紅色", "橙色", "黃色", "萊姆綠色", null, "玉綠色", "青色", "水色", "藍色", "紫色", "粉紅色", "水晶紅色"])[game.options.theme.color]
 	if (game.options.theme.dark) {
 		if (msg == "") msg = "Dark"
 		else msg += " Dark"
