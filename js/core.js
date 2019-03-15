@@ -171,7 +171,7 @@ function init_game() {
 		var autobuyer_div = document.createElement("div")
 		autobuyer_div.className = "upgrade"
 		autobuyer_div.id = "autobuyer_" + autobuyer
-		autobuyer_div.innerHTML = "<div class='upgrade_effect'>" + autobuyer_names[autobuyer] + " Autobuyer</div>" +
+		autobuyer_div.innerHTML = "<div class='upgrade_effect'>" + autobuyer_names[autobuyer] + "自動購買</div>" +
 			"<button class='upgrade_button' id='autobuyer_" + autobuyer + "_toggle' onclick='toggle_autobuyer(" + autobuyer + ")'></button>"
 		automation_div.append(autobuyer_div)
 	}
@@ -181,7 +181,7 @@ function init_game() {
 		var feat_div = feats_div.insertRow(feat - 1)
 		var feat_desc = feat_div.insertCell(0)
 		var feat_completion = feat_div.insertCell(1)
-		feat_desc.textContent = "#" + feat + ": " + feat_descs[feat]
+		feat_desc.textContent = "第" + feat + ": " + feat_descs[feat]
 		feat_completion.id = "feat_" + feat
 	}
 	
@@ -243,19 +243,19 @@ function get_letters_abbreviation(x) {
 	return result
 }
 
-const timeframes={year:31556952,
-	month:2629746,
-	day:86400,
-	hour:3600,
-	minute:60,
-	second:1}
+const timeframes={年:31556952,
+	月:2629746,
+	日:86400,
+	小時:3600,
+	分鐘:60,
+	秒:1}
 function format_time(s) {
 	if (s < 1) {
-		if (s < 0.002) return '1 millisecond'
-		return Math.floor(s*1000)+' milliseconds'
+		if (s < 0.002) return '1毫秒'
+		return Math.floor(s*1000)+'毫秒'
 	} else if (s < 59.5) {
-		if (s < 1.005) return '1 second'
-		return s.toPrecision(2)+' seconds'
+		if (s < 1.005) return '1秒'
+		return s.toPrecision(2)+'秒'
 	} else if (s < Number.POSITIVE_INFINITY) {
 		var timeFormat=''
 		var lastTimePart=''
@@ -274,13 +274,13 @@ function format_time(s) {
 							needComma=true
 						}
 					}
-					lastTimePart=s+(s==1?' second':' seconds')
+					lastTimePart=s+(s==1?'秒':'秒')
 				}
 			} else if (id=='year') {
 				var amount=Math.floor(s/31556952)
 				if (amount>0) {
 					s-=amount*31556952
-					lastTimePart=amount+(amount==1?' year':' years')
+					lastTimePart=amount+(amount==1?'年':'年')
 				}
 			} else {
 				var amount=Math.floor(s/timeframes[id])
@@ -295,13 +295,13 @@ function format_time(s) {
 							needComma=true
 						}
 					}
-					lastTimePart=amount+' '+id+(amount==1?'':'s')
+					lastTimePart=amount+' '+id+(amount==1?'':'')
 				}
 			}
 		}
-		return timeFormat+(needComma?',':'')+(needAnd?' and ':'')+lastTimePart
+		return timeFormat+(needComma?'':'')+(needAnd?'':'')+lastTimePart
 	} else {
-		return 'eternity'
+		return '永恆'
 	}
 }
 
