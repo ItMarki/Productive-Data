@@ -540,7 +540,7 @@ function select_file(id) {
 
 function update_select_file_button(file) {
 	if (tab_name != "computers") return
-	var msg = "檔案 #" + file + "<br>" + format(game.files[file].bits) + "(;¬_¬)"
+	var msg = "檔案 #" + file + "<br>" + format(game.files[file].bits) + "位元"
 	if (game.computers.servers_unlocked) msg += "<br>" + format(game.files[file].words) + "字元"
 	document.getElementById("select_file_" + file).innerHTML = msg
 }
