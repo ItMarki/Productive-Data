@@ -715,13 +715,13 @@ function update_autobuyers() {
 	if (game.transfer.autobuyers_unlocked == 17) document.getElementById("buy_autobuyer").style.display = "none"
 	else {
 		document.getElementById("buy_autobuyer").style.display = ""
-		document.getElementById("buy_autobuyer").innerHTML = "Buy " + autobuyer_names[game.transfer.autobuyers_unlocked + 1] + " Autobuyer<br>Cost: " + get_autobuyer_cost() + " words"
+		document.getElementById("buy_autobuyer").innerHTML = "購買" + autobuyer_names[game.transfer.autobuyers_unlocked + 1] + "自動購買<br>成本: " + get_autobuyer_cost() + "字元"
 	}
 	for (var autobuyer=1; autobuyer<18; autobuyer++) {
 		if (autobuyer > game.transfer.autobuyers_unlocked) document.getElementById("autobuyer_" + autobuyer).style.display = "none"
 		else {
 			document.getElementById("autobuyer_" + autobuyer).style.display = ""
-			document.getElementById("autobuyer_" + autobuyer + "_toggle").textContent = game.transfer.automation[autobuyer] ? "ON" : "OFF"
+			document.getElementById("autobuyer_" + autobuyer + "_toggle").textContent = game.transfer.automation[autobuyer] ? "開" : "關"
 		}
 	}
 }
@@ -737,7 +737,7 @@ function buy_autobuyer() {
 
 function toggle_autobuyer(autobuyer) {
 	game.transfer.automation[autobuyer] = !game.transfer.automation[autobuyer]
-	document.getElementById("autobuyer_" + autobuyer + "_toggle").textContent = game.transfer.automation[autobuyer] ? "ON" : "OFF"
+	document.getElementById("autobuyer_" + autobuyer + "_toggle").textContent = game.transfer.automation[autobuyer] ? "開" : "關"
 }
 
 function is_autobuyer_on(autobuyer) {
@@ -799,18 +799,18 @@ function dissolve_for_sxp(comp) {
 		game.statistics.total_server_levelups += add
 		update_computers_data()
 		for (var comp2=1; comp2<5; comp2++) if (!game.computers[comp2].is_server) update_computer(comp2)
-		document.getElementById("total_computer_boost").innerHTML = "<b>Total multiplier discount on upgrades 1 and 3</b>: " + format(get_total_computer_boost(), 1) + "x"
+		document.getElementById("total_computer_boost").innerHTML = "<b>在第一和第三個升級的總倍數折扣</b>: " + format(get_total_computer_boost(), 1) + "x"
 		if (tab_name == "transfer") {
 			var total = 0
 			if (game.computers.unlocked) for (var comp=1; comp<5; comp++) total += game.computers[comp].level
-			document.getElementById("total_computer_levels").innerHTML = "<b>Total computer levels</b>: " + total
+			document.getElementById("total_computer_levels").innerHTML = "<b>總共電腦級數</b>: " + total
 		}
 	}
 	update_computer(comp)
 	update_words_display()
 }
 
-var feat_descs = [null, "Transfer in under 10 seconds.", "Transfer with 1 server used."]
+var feat_descs = [null, "在十秒內轉移。", "只用一個伺服器轉移。"]
 var feat_disappear_timeout
 function get_feat(id) {
 	if (!game.computers.servers_unlocked) return
@@ -818,10 +818,10 @@ function get_feat(id) {
 	game.feats.achieved.push(id)
 	game.feats.notifications++
 	document.getElementById("feat_achieved").style.opacity = 1
-	document.getElementById("feat_achieved").innerHTML = "<b>Feat #" + id + "achieved!</b><br>" + feat_descs[id]
+	document.getElementById("feat_achieved").innerHTML = "<b>功績#" + id + "達成！</b><br>" + feat_descs[id]
 	clearInterval(feat_disappear_timeout)
 	feat_disappear_timeout = setTimeout(function() {
 		document.getElementById("feat_achieved").style.opacity = 0
 	}, 5000)
-	document.getElementById("tab_button_feats").textContent = "Feats (" + game.feats.notifications + ")"
+	document.getElementById("tab_button_feats").textContent = "功績(" + game.feats.notifications + ")"
 }
