@@ -484,7 +484,7 @@ function unlock_files() {
 
 function update_file(id) {
 	if (tab_name != "files") return
-	var msg = "File #" + id + "<br>倍數: " + format(get_file_boost(id), 1) + "x<br>" + format(game.files[id].bits) + "位元"
+	var msg = "File #" + id + "<br>倍數: " + format(get_file_boost(id), 1) + "倍<br>" + format(game.files[id].bits) + "位元"
 	if (game.statistics.times_transfer > 0) msg += "和" + format(game.files[id].words) + "字元"
 	document.getElementById("file_" + id).innerHTML = msg
 }
@@ -508,7 +508,7 @@ function inject_data(id) {
 
 function select_percentage(percentage) {
 	game.files.percentage = percentage
-	document.getElementById("percentage_to_be_injected").innerHTML = "<b>Percentage of data to be injected</b>: " + (Math.round(percentage * 10) / 10) + "%"
+	document.getElementById("percentage_to_be_injected").innerHTML = "<b>要注射的數據的百分比</b>: " + (Math.round(percentage * 10) / 10) + "%"
 }
 
 function get_file_boost(file) {
@@ -535,31 +535,31 @@ function unlock_computers() {
 function select_file(id) {
 	if (game.files[id].bits == 0 && (!game.computers.servers_unlocked || game.files[id].words == 0)) return
 	game.computers.file_selected = id
-	document.getElementById("file_selected").innerHTML = "<b>File selected</b>: #" + id
+	document.getElementById("file_selected").innerHTML = "<b>選擇的檔案</b>: #" + id
 }
 
 function update_select_file_button(file) {
 	if (tab_name != "computers") return
-	var msg = "File #" + file + "<br>" + format(game.files[file].bits) + " bits"
-	if (game.computers.servers_unlocked) msg += "<br>" + format(game.files[file].words) + " words"
+	var msg = "檔案 #" + file + "<br>" + format(game.files[file].bits) + "(;¬_¬)"
+	if (game.computers.servers_unlocked) msg += "<br>" + format(game.files[file].words) + "字元"
 	document.getElementById("select_file_" + file).innerHTML = msg
 }
 
 function update_computer(id) {
 	if (tab_name != "computers") return
-	var msg = (game.computers[id].is_server ? "Server" : "Computer") + " #" + id
+	var msg = (game.computers[id].is_server ? "伺服器" : "電腦") + " #" + id
 	if (game.computers[id].is_server) msg += ""
-	else if (game.computers[id].level > 0 || !game.computers.servers_unlocked) msg += "<br>Multiplier: " + format(Math.pow(2, Math.sqrt(game.computers[id].level) * data.computer_strength), 1) + "x"
+	else if (game.computers[id].level > 0 || !game.computers.servers_unlocked) msg += "<br>倍數: " + format(Math.pow(2, Math.sqrt(game.computers[id].level) * data.computer_strength), 1) + "倍"
 	msg += "<br>Level: " + game.computers[id].level
-	if (game.computers[id].is_server) msg += "<br>SXP: " + format(game.computers[id].sxp) + "<br>Next: " + format(get_server_requirement(id))
+	if (game.computers[id].is_server) msg += "<br>SXP: " + format(game.computers[id].sxp) + "<br>下一個: " + format(get_server_requirement(id))
 	else {
 		msg += "<br>EXP: " + format(game.computers[id].exp)
 		if (game.computers[id].level == 0 && game.computers.servers_unlocked) msg += " | SXP: " + format(game.computers[id].sxp)
 		msg += "<br>Next: " + format(get_level_requirement(id))
-		if (game.computers[id].level == 0 && game.computers.servers_unlocked) msg += " EXP<br>To server: 512 SXP"
+		if (game.computers[id].level == 0 && game.computers.servers_unlocked) msg += " EXP<br>到伺服器: 512 SXP"
 	}
 	document.getElementById("computer_" + id).innerHTML = msg
-	document.getElementById("computer_" + id + "_button").textContent = "Dissolve" + (game.computers[id].level > 0 || !game.computers.servers_unlocked ? "" : " for EXP")
+	document.getElementById("computer_" + id + "_button").textContent = "融化" + (game.computers[id].level > 0 || !game.computers.servers_unlocked ? "" : "基於EXP")
 	document.getElementById("computer_" + id + "_button_secondary").style.display = game.computers[id].level > 0 || !game.computers.servers_unlocked ? "none" : ""
 }
 
@@ -579,7 +579,7 @@ function computer_dissolve(comp, auto) {
 	update_file(selected)
 	if (!auto) {
 		game.computers.file_selected = null
-		document.getElementById("file_selected").innerHTML = "<b>File selected</b>: None"
+		document.getElementById("file_selected").innerHTML = "<b>選擇的檔案</b>: 沒有"
 	}
 	var req = get_level_requirement(comp)
 	if (game.computers[comp].exp >= req) {
@@ -588,11 +588,11 @@ function computer_dissolve(comp, auto) {
 		game.computers[comp].level += add
 		game.statistics.total_levelups += add
 		game.statistics.total_computer_levelups += add
-		document.getElementById("total_computer_boost").innerHTML = "<b>Total multiplier discount on upgrades 1 and 3</b>: " + format(get_total_computer_boost(), 1) + "x"
+		document.getElementById("total_computer_boost").innerHTML = "<b>在第一和第三個升級的總倍數折扣</b>: " + format(get_total_computer_boost(), 1) + "倍"
 		if (tab_name == "transfer") {
 			var total = 0
 			if (game.computers.unlocked) for (var comp=1; comp<5; comp++) total += game.computers[comp].level
-			document.getElementById("total_computer_levels").innerHTML = "<b>Total computer levels</b>: " + total
+			document.getElementById("total_computer_levels").innerHTML = "<b>總共電腦級數</b>: " + total
 		}
 	}
 	if (tab_name == "upgrades") {
@@ -656,7 +656,7 @@ function transfer() {
 	for (var file=1; file<9; file++) game.files[file].bits = 0
 	for (var comp=1; comp<5; comp++) game.computers[comp] = {exp: 0, level: 0, sxp: 0, is_server: false}
 	game.transfer.words_gain_rate_peak = 0
-	document.getElementById("total_computer_levels").innerHTML = "<b>Total computer levels</b>: 0"
+	document.getElementById("total_computer_levels").innerHTML = "<b>總共電腦級數</b>: 0"
 	update_computers_data()
 	update_words_display()
 	if (is_autobuyer_on(1)) produce("bits")
@@ -667,7 +667,7 @@ function transfer() {
 function update_words_display() {
 	if (game.statistics.times_transfer > 0) {
 		document.getElementById("words_div").style.display = ""
-		document.getElementById("words_multiplier").textContent = format(get_words_boost(), 1) + "x on productions & bit capacity"
+		document.getElementById("words_multiplier").textContent = format(get_words_boost(), 1) + "倍給予生產力和位元容量"
 		document.getElementById("automation").style.display = ""
 	} else {
 		document.getElementById("words_div").style.display = "none"
