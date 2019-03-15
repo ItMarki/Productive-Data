@@ -327,14 +327,14 @@ function get_theme_name() {
 	var msg = ""
 	if (game.options.theme.color != 5) msg = ([null, "紅色", "橙色", "黃色", "萊姆綠色", null, "玉綠色", "青色", "水色", "藍色", "紫色", "粉紅色", "水晶紅色"])[game.options.theme.color]
 	if (game.options.theme.dark) {
-		if (msg == "") msg = "Dark"
-		else msg += " Dark"
+		if (msg == "") msg = "暗"
+		else msg += "暗"
 	}
 	if (game.options.theme.light) {
-		if (msg == "") msg = "Light"
-		else msg += " Light"
+		if (msg == "") msg = "亮"
+		else msg += "亮"
 	}
-	if (msg == "") return "Normal"
+	if (msg == "") return "普通"
 	else return msg
 }
 
@@ -360,8 +360,8 @@ function update_theme() {
 
 function change_theme_color(id) {
 	game.options.theme.color = id
-	document.getElementById("theme").textContent = "Theme: " + get_theme_name()
-	document.getElementById("theme_color").textContent = "Color: " + ([null, "Red", "Orange", "Yellow", "Lime", "Green", "Jade", "Cyan", "Water", "Blue", "Purple", "Pink", "Red Beryl"])[game.options.theme.color]
+	document.getElementById("theme").textContent = "主題: " + get_theme_name()
+	document.getElementById("theme_color").textContent = "Color: " + ([null, "紅色", "橙色", "黃色", "萊姆綠色", "綠色", "玉綠色", "青色", "水色", "藍色", "紫色", "粉紅色", "水晶紅色"])[game.options.theme.color]
 	update_theme()
 }
 
