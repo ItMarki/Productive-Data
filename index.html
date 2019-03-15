@@ -195,20 +195,20 @@
 					</table>
 				</div>
 				<div class="tab" id="tab_options">
-					<b style="font-size: 48px">Saving</b><br>
+					<b style="font-size: 48px">存檔</b><br>
 					<table align=center><tr>
-						<td><button class="option" onclick="save_game()">Save</button></td>
-						<td><button class="option" onclick="export_save()">Export</button></td>
-						<td><button class="option" onclick="import_save()">Import</button></td>
-						<td><button class="option" onclick="hard_reset()">HARD RESET</button></td>
+						<td><button class="option" onclick="save_game()">保存</button></td>
+						<td><button class="option" onclick="export_save()">導出</button></td>
+						<td><button class="option" onclick="import_save()">導入</button></td>
+						<td><button class="option" onclick="hard_reset()">重置</button></td>
 					</tr><tr>
 						<td></td>
 						<td><button class="option" id="auto_save" onclick="toggle_auto_save()"></button></td>
 						<td><button class="option" id="offline_progress" onclick="toggle_offline_progress()"></button></td>
 						<td></td>
 					</tr></table>
-					<div id='exported_save'>Here is your exported save. You can share it for reporting bugs.<br><textarea id='exported_save_text' readonly></textarea></div>
-					<b style="font-size: 48px">Display</b><br>
+					<div id='exported_save'>這是你的導出存檔。你可分享，報錯誤。<br><textarea id='exported_save_text' readonly></textarea></div>
+					<b style="font-size: 48px">(╯▽╰)</b><br>
 					<table align=center><tr>
 						<td><button class="option" id="tick_rate" onclick="change_tick_rate()"></button></td>
 						<td><button class="option" id="theme" onclick="open_theme_menu()"></button></td>
@@ -216,30 +216,30 @@
 					</tr></table>
 					<div id='theme_menu'>
 						<div id="theme_color"></div>
-						<button class="theme_option_button" onclick="change_theme_color(1)">Red</button>
-						<button class="theme_option_button" onclick="change_theme_color(2)">Orange</button>
-						<button class="theme_option_button" onclick="change_theme_color(3)">Yellow</button>
-						<button class="theme_option_button" onclick="change_theme_color(4)">Lime</button>
-						<button class="theme_option_button" onclick="change_theme_color(5)">Green</button>
-						<button class="theme_option_button" onclick="change_theme_color(6)">Jade</button>
-						<button class="theme_option_button" onclick="change_theme_color(7)">Cyan</button>
-						<button class="theme_option_button" onclick="change_theme_color(8)">Water</button>
-						<button class="theme_option_button" onclick="change_theme_color(9)">Blue</button>
-						<button class="theme_option_button" onclick="change_theme_color(10)">Purple</button>
-						<button class="theme_option_button" onclick="change_theme_color(11)">Pink</button>
-						<button class="theme_option_button" onclick="change_theme_color(12)">Red Beryl</button><br><br>
+						<button class="theme_option_button" onclick="change_theme_color(1)">紅色</button>
+						<button class="theme_option_button" onclick="change_theme_color(2)">橙色</button>
+						<button class="theme_option_button" onclick="change_theme_color(3)">黃色</button>
+						<button class="theme_option_button" onclick="change_theme_color(4)">萊姆綠色</button>
+						<button class="theme_option_button" onclick="change_theme_color(5)">綠色</button>
+						<button class="theme_option_button" onclick="change_theme_color(6)">玉綠色</button>
+						<button class="theme_option_button" onclick="change_theme_color(7)">青色</button>
+						<button class="theme_option_button" onclick="change_theme_color(8)">水色</button>
+						<button class="theme_option_button" onclick="change_theme_color(9)">藍色</button>
+						<button class="theme_option_button" onclick="change_theme_color(10)">紫色</button>
+						<button class="theme_option_button" onclick="change_theme_color(11)">粉紅色</button>
+						<button class="theme_option_button" onclick="change_theme_color(12)">水晶紅色</button><br><br>
 						<button id="theme_light" class="theme_option_button" onclick="toggle_theme_light()"></button>
 						<button id="theme_dark" class="theme_option_button" onclick="toggle_theme_dark()"></button>
 					</div>
-					<b style="font-size: 48px">Quality of Life</b><br>
+					<b style="font-size: 48px">生活質素</b><br>
 					<table align=center><tr>
 						<td><button class="option" id="lock_bits_production" onclick="lock_bits_production()"></button></td>
 					</tr></table>
 				</div>
 				<div class="tab" id="tab_about">
-					<b style='font-size: 48px'>Productive Data</b><br>Created by Aarex Tiaokhiao<br>v0.1.5.3<br><br>
-					<a href="https://aarextiaokhiao.github.io/">Home</a><br>
-					<a href="changelog.html">Changelog</a><br>
+					<b style='font-size: 48px'>Productive Data</b><br>Aarex Tiaokhiao創造的<br>v0.1.5.3<br><br>
+					<a href="https://aarextiaokhiao.github.io/">主頁</a><br>
+					<a href="changelog.html">更新日誌</a><br>
 					<a href="http://discord.gg/wPRtzau">Discord</a>
 				</div>
 			</div>
