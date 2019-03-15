@@ -41,13 +41,13 @@
 		<div class="box right">
 			<div class="boxInside">
 				<div class="tab" id="tab_stuck" style="display: block">
-					If you are seeing this sentence for few seconds, please reload or export your save!<br>
-					<button onclick="document.location.reload(true)">Reload</button>
-					<button onclick="export_save_safe()">Export</button>
-					<div id='exported_save_safe'>Here is your exported save. You can share it for reporting bugs.<br><textarea id='exported_save_safe_text' readonly></textarea></div>
+					如果你看到這句話幾秒，請重新加載或者導出你的存檔！<br>
+					<button onclick="document.location.reload(true)">重新加載</button>
+					<button onclick="export_save_safe()">導出</button>
+					<div id='exported_save_safe'>這是你的導出存檔。你可分享，報錯誤。<br><textarea id='exported_save_safe_text' readonly></textarea></div>
 				</div>
 				<div class="tab" id="tab_upgrades">
-					<button onclick="max_upgrades()">Max upgrades</button><br>
+					<button onclick="max_upgrades()">升級最大</button><br>
 					<div class="upgrade">
 						<div class="upgrade_effect" id="upgrade_1"></div>
 						<button class="upgrade_button" id="upgrade_1_button" onclick="buy_upgrade(1)"></button>
@@ -61,11 +61,11 @@
 				</div>
 				<div class="tab" id="tab_files">
 					<div class="tab_locked" id="tab_locked_files">
-						<b style="font-size: 48px">Unlock files?</b><br>
-						<button class="unlock_button" onclick="unlock_files()">Cost: 64 bytes</button>
+						<b style="font-size: 48px">解鎖檔案？</b><br>
+						<button class="unlock_button" onclick="unlock_files()">成本: 64位元組</button>
 						<div id="perm_unlock_files">
-							<b>Or are you want to perm-unlock files?</b><br>
-							<button class="unlock_button" onclick="perm_unlock_files()">Cost: 16 words</button>
+							<b>或想要永久解鎖檔案？</b><br>
+							<button class="unlock_button" onclick="perm_unlock_files()">成本: 16字元</button>
 						</div>
 					</div>
 					<div id="tab_unlocked_files">
@@ -77,21 +77,21 @@
 						<button onclick="select_percentage(50)">50%</button>
 						<button onclick="select_percentage(75)">75%</button>
 						<button onclick="select_percentage(100)">100%</button><br>
-						<div id="inject_equally_button"><button onclick="inject_equally()">Inject all words evenly</button></div>
+						<div id="inject_equally_button"><button onclick="inject_equally()">均勻注射全部字元</button></div>
 					</div>
 				</div>
 				<div class="tab" id="tab_computers">
 					<div class="tab_locked" id="tab_locked_computers">
-						<b style="font-size: 48px">Unlock computers?</b><br>
-						<button class="unlock_button" onclick="unlock_computers()">512x multiplier</button>
+						<b style="font-size: 48px">解鎖電腦？</b><br>
+						<button class="unlock_button" onclick="unlock_computers()">512倍倍數</button>
 						<div id="total_file_boost_computers"></div>
 						<div id="perm_unlock_computers">
-							<b>Or are you want to perm-unlock computers?</b><br>
-							<button class="unlock_button" onclick="perm_unlock_computers()">Cost: 256 words</button>
+							<b>或者想要永久解鎖電腦？</b><br>
+							<button class="unlock_button" onclick="perm_unlock_computers()">成本: 256字元</button>
 						</div>
 					</div>
 					<div id="tab_unlocked_computers">
-						<b>Select the file you want to dissolve.</b>
+						<b>請選擇你想要融化的檔案。</b>
 						<div id="file_selected"></div>
 						<button class="select_file_button" id="select_file_1" onclick="select_file(1)"></button>
 						<button class="select_file_button" id="select_file_2" onclick="select_file(2)"></button>
@@ -104,8 +104,8 @@
 						<div id="total_computer_boost"></div>
 						<div id="computers"></div>
 						<div id="unlock_servers">
-							<b style="font-size: 48px">Unlock servers?</b><br>
-							<button class="unlock_button" onclick="unlock_servers()">Cost: 512 words</button>
+							<b style="font-size: 48px">解鎖伺服器？</b><br>
+							<button class="unlock_button" onclick="unlock_servers()">成本: 512字元</button>
 						</div>
 					</div>
 				</div>
