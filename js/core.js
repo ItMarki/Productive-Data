@@ -706,7 +706,7 @@ function inject_equally() {
 	document.getElementById("total_file_boost").innerHTML = "<b>給予位元和位元組生產力的倍數</b>: " + format(get_total_file_boost(), 1) + "倍"
 }
 
-var autobuyer_names = [null, "Bit Production", "Byte Production", "Upgrade #1", "Upgrade #2", "Upgrade #3", "File #1", "File #2", "File #3", "File #4", "File #5", "File #6", "File #7", "File #8", "Computer #1", "Computer #2", "Computer #3", "Computer #4"]
+var autobuyer_names = [null, "位元生產", "位元組生產", "第一個升級", "第二個升級", "第三個升級", "第一個檔案", "第二個檔案", "第三個檔案", "第四個檔案", "第五個檔案", "第六個檔案", "第七個檔案", "第八個檔案", "第一個電腦", "第二個電腦", "第三個電腦", "第四個電腦"]
 function get_autobuyer_cost() {
 	return Math.ceil(Math.pow(2, game.transfer.autobuyers_unlocked / 2))
 }
