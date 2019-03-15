@@ -367,15 +367,15 @@ function change_theme_color(id) {
 
 function toggle_theme_light() {
 	game.options.theme.light = !game.options.theme.light
-	document.getElementById("theme").textContent = "Theme: " + get_theme_name()
-	document.getElementById("theme_light").textContent = "Light: " + (game.options.theme.light ? "ON" :  "OFF")
+	document.getElementById("theme").textContent = "主題: " + get_theme_name()
+	document.getElementById("theme_light").textContent = "亮: " + (game.options.theme.light ? "開" :  "關")
 	update_theme()
 }
 
 function toggle_theme_dark() {
 	game.options.theme.dark = !game.options.theme.dark
-	document.getElementById("theme").textContent = "Theme: " + get_theme_name()
-	document.getElementById("theme_dark").textContent = "Dark: " + (game.options.theme.dark ? "ON" :  "OFF")
+	document.getElementById("theme").textContent = "主題: " + get_theme_name()
+	document.getElementById("theme_dark").textContent = "暗: " + (game.options.theme.dark ? "開" :  "關")
 	update_theme()
 }
 
@@ -387,7 +387,7 @@ function change_notation() {
 	else if (game.options.notation == "Letters") game.options.notation = "Scientific"
 	else return
 	update_words_display()
-	document.getElementById("notation").textContent = "Notation: " + game.options.notation
+	document.getElementById("notation").textContent = "數據格式: " + game.options.notation
 }
 
 //Age 1: The Hub
