@@ -14,13 +14,13 @@ function update_tab_on_switch(id) {
 		if (game.files.unlocked) {
 			document.getElementById("tab_locked_files").style.display = "none"
 			document.getElementById("tab_unlocked_files").style.display = "block"
-			document.getElementById("percentage_to_be_injected").innerHTML = "<b>Percentage of data to be injected</b>: " + (Math.round(game.files.percentage * 10) / 10) + "%"
+			document.getElementById("percentage_to_be_injected").innerHTML = "<b>要注射的數據的百分比</b>: " + (Math.round(game.files.percentage * 10) / 10) + "%"
 			for (var file=1; file<9; file++) {
 				update_file(file)
-				document.getElementById("file_" + file + "_button").textContent = "Inject" + (game.statistics.times_transfer > 0 ? " bits" : "")
+				document.getElementById("file_" + file + "_button").textContent = "注射" + (game.statistics.times_transfer > 0 ? " bits" : "")
 				document.getElementById("inject_words_" + file).style.display = game.statistics.times_transfer > 0 ? "" : "none"
 			}
-			document.getElementById("total_file_boost").innerHTML = "<b>Total multiplier on bit and byte productions</b>: " + format(get_total_file_boost(), 1) + "x"
+			document.getElementById("total_file_boost").innerHTML = "<b>給予位元和位元組生產力的倍數</b>: " + format(get_total_file_boost(), 1) + "٩(๑`н´๑)۶"
 			document.getElementById("inject_equally_button").style.display = game.statistics.times_transfer > 0 ? "" : "none"
 		} else {
 			document.getElementById("tab_locked_files").style.display = "block"
@@ -32,22 +32,22 @@ function update_tab_on_switch(id) {
 		if (game.computers.unlocked) {
 			document.getElementById("tab_locked_computers").style.display = "none"
 			document.getElementById("tab_unlocked_computers").style.display = "block"
-			document.getElementById("file_selected").innerHTML = "<b>File selected</b>: " + (game.computers.file_selected ? "#" + game.computers.file_selected : "None")
+			document.getElementById("file_selected").innerHTML = "<b>選擇的檔案</b>: " + (game.computers.file_selected ? "#" + game.computers.file_selected : "None")
 			for (var file=1; file<9; file++) update_select_file_button(file)
 			for (var comp=1; comp<5; comp++) update_computer(comp)
-			document.getElementById("total_computer_boost").innerHTML = "<b>Total multiplier discount on upgrades 1 and 3</b>: " + format(get_total_computer_boost(), 1) + "x"
+			document.getElementById("total_computer_boost").innerHTML = "<b>在第一和第三個升級的總倍數折扣</b>: " + format(get_total_computer_boost(), 1) + "倍"
 			document.getElementById("unlock_servers").style.display = game.computers.servers_unlocked || game.statistics.times_transfer == 0 ? "none" : ""
 		} else {
 			document.getElementById("tab_locked_computers").style.display = "block"
 			document.getElementById("tab_unlocked_computers").style.display = "none"
-			document.getElementById("total_file_boost_computers").innerHTML = "<b>Total multiplier on bit and byte productions</b>: " + format(get_total_file_boost(), 1) + "x"
+			document.getElementById("total_file_boost_computers").innerHTML = "<b>給予位元和位元組生產力的倍數</b>: " + format(get_total_file_boost(), 1) + "x"
 			document.getElementById("perm_unlock_computers").style.display = game.statistics.times_transfer > 0 ? "" : "none"
 		}
 	}
 	if (id == "transfer") {
 		var total = 0
 		if (game.computers.unlocked) for (var comp=1; comp<5; comp++) total += game.computers[comp].level
-		document.getElementById("total_computer_levels").innerHTML = "<b>Total computer levels</b>: " + total
+		document.getElementById("total_computer_levels").innerHTML = "<b>總共的電腦級數</b>: " + total
 		if (game.statistics.times_transfer > 0) update_autobuyers()
 	}
 	if (id == "statistics") {
@@ -103,17 +103,17 @@ function update_tab_on_switch(id) {
 	}
 	if (id == "feats") {
 		game.feats.notifications = 0
-		document.getElementById("tab_button_feats").textContent = "Feats"
-		for (var feat=1; feat<feat_descs.length; feat++) document.getElementById("feat_" + feat).textContent = game.feats.achieved.includes(feat) ? "Completed" : "Not completed"
+		document.getElementById("tab_button_feats").textContent = "功績"
+		for (var feat=1; feat<feat_descs.length; feat++) document.getElementById("feat_" + feat).textContent = game.feats.achieved.includes(feat) ? "完成" : "未完成"
 	}
 	if (id == "options") {
-		document.getElementById("auto_save").textContent = "Auto save: " + (game.options.auto_save ? "ON" : "OFF")
-		document.getElementById("offline_progress").textContent = "Offline progress: " + (game.options.offline_progress ? "ON" : "OFF")
-		document.getElementById("tick_rate").textContent = "Tick rate: " + game.options.tick_rate + "/s"
-		document.getElementById("theme").textContent = "Theme: " + get_theme_name()
+		document.getElementById("auto_save").textContent = "自動保存: " + (game.options.auto_save ? "開" : "關")
+		document.getElementById("offline_progress").textContent = "離線進度: " + (game.options.offline_progress ? "開" : "櫃")
+		document.getElementById("tick_rate").textContent = "每刻率: " + game.options.tick_rate + "每秒"
+		document.getElementById("theme").textContent = "主題: " + get_theme_name()
 		document.getElementById("theme_menu").style.display = "none"
-		document.getElementById("notation").textContent = "Notation: " + game.options.notation
-		document.getElementById("lock_bits_production").textContent = "Locked bits production: " + (game.options.locked_bits_production ? "ON" : "OFF")
+		document.getElementById("notation").textContent = "數據格式: " + game.options.notation
+		document.getElementById("lock_bits_production").textContent = "鎖定位元生產=: " + (game.options.locked_bits_production ? "開" : "關")
 		document.getElementById("exported_save").style.display = "none"
 	}
 }
@@ -122,7 +122,7 @@ function update_tab_buttons() {
 	document.getElementById("tab_button_computers").style.display = game.files.unlocked || game.statistics.times_transfer > 0 ? "" : "none"
 	document.getElementById("tab_button_transfer").style.display = game.computers.unlocked || game.statistics.times_transfer > 0 ? "" : "none"
 	document.getElementById("tab_button_feats").style.display = game.computers.servers_unlocked ? "" : "none"
-	document.getElementById("tab_button_feats").textContent = "Feats" + (game.feats.notifications > 0 ? " (" + game.feats.notifications + ")" : "")
+	document.getElementById("tab_button_feats").textContent = "功績" + (game.feats.notifications > 0 ? " (" + game.feats.notifications + ")" : "")
 }
 
 function open_theme_menu() {
