@@ -119,8 +119,8 @@ function game_tick() {
 		if (total < transfer_requirement) document.getElementById("transfer").textContent = "你多需要" + (transfer_requirement - total) + "級數，才能轉移。"
 		else if (game.statistics.times_transfer == 0) document.getElementById("transfer").textContent = "重置遊戲，轉移給予字元！"
 		else {
-			document.getElementById("transfer").innerHTML = "Transfer for " + format(words_gain) + " words.<br>" + format(words_gain_rate / 60, 1) + "/min<br>Peak: " + format(game.transfer.words_gain_rate_peak / 60, 1) + "/min"
-			if (words_gain < 128) document.getElementById("next_word_gain").innerHTML = "<b>Bytes left for next word gain for your next transfer</b>: " + format(Math.pow((words_gain + 1) * 128, 8) - game.bytes)
+			document.getElementById("transfer").innerHTML = "轉移給予" + format(words_gain) + "字元。<br>" + format(words_gain_rate / 60, 1) + "每分鐘<br>高峯: " + format(game.transfer.words_gain_rate_peak / 60, 1) + "每分鐘"
+			if (words_gain < 128) document.getElementById("next_word_gain").innerHTML = "<b>為下一次轉移的下一個獲得字元的剩餘位元組</b>: " + format(Math.pow((words_gain + 1) * 128, 8) - game.bytes)
 		}
 	}
 	if (tab_name == "statistics") {
@@ -151,8 +151,8 @@ function init_game() {
 		var file_div = document.createElement("div")
 		file_div.className = "upgrade"
 		file_div.innerHTML = "<div class='upgrade_effect' id='file_" + file + "'></div>" +
-			"<button class='upgrade_button' id='file_" + file + "_button' onclick='inject_data(" + file + ")'>Inject</button>" +
-			"<button class='inject_button_secondary' id='inject_words_" + file + "' onclick='inject_words(" + file + ")'>Inject words</button>"
+			"<button class='upgrade_button' id='file_" + file + "_button' onclick='inject_data(" + file + ")'>注射</button>" +
+			"<button class='inject_button_secondary' id='inject_words_" + file + "' onclick='inject_words(" + file + ")'>注射字元</button>"
 		files_div.append(file_div)
 	}
 	
@@ -161,8 +161,8 @@ function init_game() {
 		var computer_div = document.createElement("div")
 		computer_div.className = "computer"
 		computer_div.innerHTML = "<div class='upgrade_effect' id='computer_" + comp + "'></div>" +
-			"<button class='upgrade_button' id='computer_" + comp + "_button' onclick='primary_computer_dissolve(" + comp + ")'>Dissolve</button>" +
-			"<button class='inject_button_secondary' id='computer_" + comp + "_button_secondary' onclick='dissolve_for_sxp(" + comp + ")'>Dissolve for SXP</button>"
+			"<button class='upgrade_button' id='computer_" + comp + "_button' onclick='primary_computer_dissolve(" + comp + ")'>融化</button>" +
+			"<button class='inject_button_secondary' id='computer_" + comp + "_button_secondary' onclick='dissolve_for_sxp(" + comp + ")'>融化給予SXP</button>"
 		computers_div.append(computer_div)
 	}
 	
