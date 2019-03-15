@@ -110,7 +110,7 @@ function export_save_safe() {
 }
 
 function import_save() {
-	var save_file = prompt("Please enter your exported save to import. WARNING: Your current save will be overwritten!")
+	var save_file = prompt("請輸入你的導出存檔來導入。警告: 你現在的存檔會被複寫！")
 	if (save_file !== null) {
 		load_game(save_file)
 		save_game()
@@ -119,7 +119,7 @@ function import_save() {
 }
 
 function hard_reset() {
-	if (!confirm("Hard resetting your save erases everything, including your options and statistics. ARE YOU REALLY WANT TO DO THIS? YOU CAN'T UNDO THIS!")) return
+	if (!confirm("重置你的存檔刪除全部，包括你的選項和統計。你真的要這樣做？你不能還原！")) return
 	stop_interval()
 	produce()
 	game = get_default_player()
