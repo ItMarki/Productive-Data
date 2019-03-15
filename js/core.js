@@ -108,16 +108,16 @@ function game_tick() {
 		game.transfer.words_gain_rate_peak = Math.max(words_gain_rate, game.transfer.words_gain_rate_peak)
 	}
 	
-	document.getElementById("bits").innerHTML = "<b>Bits</b>: " + format(game.bits) + " / " + format(get_bit_capacity())
-	document.getElementById("bits_production").innerHTML = format(get_bit_production(), 1) + "/s"
-	document.getElementById("bytes").innerHTML = "<b>Bytes</b>: " + format(game.bytes)
-	document.getElementById("bytes_production").innerHTML = format(get_byte_production(), 1) + "/s"
-	if (game.statistics.times_transfer > 0) document.getElementById("words").innerHTML = "<b>Words</b>: " + format(game.transfer.words) + (total >= transfer_requirement && words_gain > 0 ? " (+" + format(words_gain) + ")" :  "")
+	document.getElementById("bits").innerHTML = "<b>位元</b>: " + format(game.bits) + " / " + format(get_bit_capacity())
+	document.getElementById("bits_production").innerHTML = format(get_bit_production(), 1) + "每秒"
+	document.getElementById("bytes").innerHTML = "<b>位元組</b>: " + format(game.bytes)
+	document.getElementById("bytes_production").innerHTML = format(get_byte_production(), 1) + "每秒"
+	if (game.statistics.times_transfer > 0) document.getElementById("words").innerHTML = "<b>字元</b>: " + format(game.transfer.words) + (total >= transfer_requirement && words_gain > 0 ? " (+" + format(words_gain) + ")" :  "")
 	
 	if (tab_name == "transfer") {
 		document.getElementById("next_word_gain").textContent = ""
-		if (total < transfer_requirement) document.getElementById("transfer").textContent = "You need " + (transfer_requirement - total) + " more levels to transfer."
-		else if (game.statistics.times_transfer == 0) document.getElementById("transfer").textContent = "Reset the game and transfer for words!"
+		if (total < transfer_requirement) document.getElementById("transfer").textContent = "你多需要" + (transfer_requirement - total) + "級數，才能轉移。"
+		else if (game.statistics.times_transfer == 0) document.getElementById("transfer").textContent = "重置遊戲，轉移給予字元！"
 		else {
 			document.getElementById("transfer").innerHTML = "Transfer for " + format(words_gain) + " words.<br>" + format(words_gain_rate / 60, 1) + "/min<br>Peak: " + format(game.transfer.words_gain_rate_peak / 60, 1) + "/min"
 			if (words_gain < 128) document.getElementById("next_word_gain").innerHTML = "<b>Bytes left for next word gain for your next transfer</b>: " + format(Math.pow((words_gain + 1) * 128, 8) - game.bytes)
