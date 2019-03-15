@@ -394,9 +394,9 @@ function change_notation() {
 //Stage 1-1: Data
 function produce(id, loaded) {
 	if (id == game.production && (!game.options.locked_bits_production || game.production != "bits" || can_produce("bits")) && !loaded) id = null
-	if (game.production) document.getElementById("produce_"+game.production).textContent = "Produce"
+	if (game.production) document.getElementById("produce_"+game.production).textContent = "生產"
 	game.production = id
-	if (id && can_produce(id)) document.getElementById("produce_"+id).textContent = "Producing"
+	if (id && can_produce(id)) document.getElementById("produce_"+id).textContent = "生產中"
 }
 
 function can_produce(currency) {
@@ -415,7 +415,7 @@ function get_bit_capacity() {
 
 function lock_bits_production() {
 	game.options.locked_bits_production = !game.options.locked_bits_production
-	document.getElementById("lock_bits_production").textContent = "Locked bits production: " + (game.options.locked_bits_production ? "ON" : "OFF")
+	document.getElementById("lock_bits_production").textContent = "鎖定位元生產: " + (game.options.locked_bits_production ? "開" : "關")
 }
 
 function get_byte_production() {
@@ -425,12 +425,12 @@ function get_byte_production() {
 function update_upgrade(id) {
 	if (tab_name != "upgrades") return
 	var message = ""
-	if (id == 1) message = "Increase the bit production by 50%."
-	if (id == 2) message = "Increase the bit capacity by 50%."
-	if (id == 3) message = "Increase the byte production by 50%."
-	message += "<br><br>Level: " + game.upgrades[id - 1] + "<br>Currently: " + format(Math.pow(1.5, game.upgrades[id - 1]), 1) + "x"
+	if (id == 1) message = "將位元生產力增加50%。"
+	if (id == 2) message = "將無容量增加50%。"
+	if (id == 3) message = "將位元組生產力增加50%。"
+	message += "<br><br>Level: " + game.upgrades[id - 1] + "<br>現在: " + format(Math.pow(1.5, game.upgrades[id - 1]), 1) + "倍"
 	document.getElementById("upgrade_" + id).innerHTML = message
-	document.getElementById("upgrade_" + id + "_button").textContent = "Cost: " + format(get_upgrade_cost(id)) + " bytes"
+	document.getElementById("upgrade_" + id + "_button").textContent = "成本: " + format(get_upgrade_cost(id)) + "位元組"
 }
 
 function get_upgrade_cost(id) {
@@ -484,8 +484,8 @@ function unlock_files() {
 
 function update_file(id) {
 	if (tab_name != "files") return
-	var msg = "File #" + id + "<br>Multiplier: " + format(get_file_boost(id), 1) + "x<br>" + format(game.files[id].bits) + " bits"
-	if (game.statistics.times_transfer > 0) msg += " & " + format(game.files[id].words) + " words"
+	var msg = "File #" + id + "<br>倍數: " + format(get_file_boost(id), 1) + "x<br>" + format(game.files[id].bits) + "位元"
+	if (game.statistics.times_transfer > 0) msg += "和" + format(game.files[id].words) + "字元"
 	document.getElementById("file_" + id).innerHTML = msg
 }
 
@@ -497,11 +497,11 @@ function inject_data(id) {
 	game.statistics.bits_injected += add
 	if (game.computers.unlocked) if (is_autobuyer_on(id + 13)) if (game.computers[id].exp + game.files[id].bits > get_level_requirement(id) && !game.computers[id].is_server) computer_dissolve(id, true)
 	update_file(id)
-	if (game.options.locked_bits_production) document.getElementById("produce_bits").textContent = "Producing"
-	if (tab_name == "files") document.getElementById("total_file_boost").innerHTML = "<b>Total multiplier on bit and byte productions</b>: " + format(get_total_file_boost(), 1) + "x"
+	if (game.options.locked_bits_production) document.getElementById("produce_bits").textContent = "生產中"
+	if (tab_name == "files") document.getElementById("total_file_boost").innerHTML = "<b>給予位元和位元組生產力的倍數</b>: " + format(get_total_file_boost(), 1) + "倍"
 	if (tab_name == "computers") {
 		if (game.computers.unlocked) update_select_file_button(id)
-		else document.getElementById("total_file_boost_computers").innerHTML = "<b>Total multiplier on bit and byte productions</b>: " + format(get_total_file_boost(), 1) + "x"
+		else document.getElementById("total_file_boost_computers").innerHTML = "<b>給予位元和位元組生產力的倍數</b>: " + format(get_total_file_boost(), 1) + "倍"
 	}
 	if (tab_name == "statistics") update_tab_on_switch("statistics")
 }
